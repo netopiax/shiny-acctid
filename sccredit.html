@@ -1,0 +1,34 @@
+
+<!DOCTYPE xhtml>
+<html> <head>
+<title>SC Fuels Credit Application</title>
+<script src="https://scfuelspoc.appiancloud.com/suite/tempo/ui/sail-client/embeddedBootstrap.nocache.js" id="appianEmbedded"></script>
+<script>
+function getParameterByName(name, url) {
+    if (!url) url = window.location.href;
+    name = name.replace(/[\[\]]/g, "\\$&");
+    var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+        results = regex.exec(url);
+    if (!results) return null;
+    if (!results[2]) return '';
+    return decodeURIComponent(results[2].replace(/\+/g, " "));
+}
+function putForm() {
+    var acctid = getParameterByName("acctid");
+    var uid = getParameterByName("uid");
+    var relAction = document.createElement('appian-related-action');
+    if(acctid == "") {
+    relAction.setAttribute("recordTypeUrlStub", "1CvHbA");
+    relAction.setAttribute("recordIdentifier", uid);
+    } else {
+
+    relAction.setAttribute("recordTypeUrlStub", "5Uy3XA");
+    relAction.setAttribute("recordIdentifier", acctid);
+    }
+    relAction.setAttribute("processModelUuid", "0002e042-c059-8000-f92f-7f0000014e7a");
+    document.body.insertBefore(relAction, document.getElementById('main-content'));
+}
+</script>
+<body onload="putForm()">
+    <div id="main-content"> </div>
+</body></html>
